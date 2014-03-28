@@ -1,6 +1,8 @@
 # crud
 
-FIXME
+Sandkasse CRUD projekt der benytter clojure, ring, compojure, hiccup, rest, mysql, bootstrap, jQuery
+
+Ideen er at have et web.project, hvor man bare kan trykke f5 i browseren efter en kodeændring. Ingen manuel compile eller build.
 
 ## Prerequisites
 

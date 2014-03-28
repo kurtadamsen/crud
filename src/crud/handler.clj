@@ -14,6 +14,7 @@
 
 (defroutes public-routes
   (GET "/" [] (views/main-page))
+  (GET "/show/:id" [id] (views/show-post id))
   (route/resources "/"))
 
 (defroutes protected-routes
