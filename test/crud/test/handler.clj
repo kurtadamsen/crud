@@ -1,7 +1,7 @@
 (ns crud.test.handler
   (:use clojure.test
-        ring.mock.request  
-        crud.handler))
+        [ring.mock.request :refer :all]
+        [crud.handler :refer :all]))
 
 (deftest test-app
   (testing "main route"
