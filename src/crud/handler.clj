@@ -4,6 +4,9 @@
             [compojure.route :as route]
             [ring.util.response :as resp]
             [ring.middleware.basic-authentication :refer :all]
+            [ring.util.response :refer [resource-response response]]
+            [ring.middleware.json :as middleware]
+            [ring.middleware.defaults :refer [wrap-defaults api-defaults]]
             [crud.posts :as posts]
             [crud.views :as views]))
 
@@ -37,4 +40,7 @@
   (route/not-found "Not Found"))
 
 (def app
-  (handler/site app-routes))
+  (-> app-routes
+      (middleware/wrap-json-body)
+      (middleware/wrap-json-response)
+      (wrap-defaults api-defaults)))
