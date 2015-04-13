@@ -21,6 +21,7 @@
            (route/resources "/"))
 
 (defroutes protected-routes
+           (GET "/dashboard" [] (views/chart-page))
            (GET "/admin" [] (views/admin-blog-page))
            (GET "/admin/add" [] (views/add-post))
            (POST "/admin/create" [& params]

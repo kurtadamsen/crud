@@ -11,10 +11,10 @@
      [:meta {:name "description", :content ""}] [:meta {:name "author", :content ""}]
      [:title title]
      (include-css "/css/bootstrap.min.css" "/css/crud.css")
-     (include-js "/js/json2.js" "/js/xpath.js")]
+     (include-js "/js/json2.js" "/js/xpath.js" "/js/Chart.js")]
     [:body content
      [:div {:class "container"}
-      [:hr {}] [:footer {} [:p {} "© YouSee 2014"]]]
+      [:hr {}] [:footer {} [:p {} "© YouSee 2015"]]]
      (include-js "/js/jquery.js" "/js/bootstrap.min.js" "/js/crud.js")])
 
   )
@@ -32,6 +32,7 @@
     [:div {:class "collapse navbar-collapse"}
      [:ul {:class "nav navbar-nav"}
       [:li {} [:a {:shape "rect", :href "/"} "Hjem"]]
+      [:li {} [:a {:shape "rect", :href "/dashboard"} "Dashboard"]]
       [:li {} [:a {:shape "rect", :href "/admin"} "Admin"]]]]]]
  ]
   )
@@ -93,6 +94,18 @@
              ]
             [:div {:class "row"}
              (map #(post-summary %) (posts/all))]]]))
+
+(defn chart-page []
+  (layout "Min Blog - Administrer Blog"
+          (nav-bar)
+          [:div {:class "container"}
+           [:div {:class "content"}
+            [:h1 "Test chart (chartjs)"]
+            [:div {:class "col-6 col-sm-6 col-lg-4"} [:canvas {:id "myChart1" }] [:hr]]
+            [:div {:class "col-6 col-sm-6 col-lg-4"} [:canvas {:id "myChart2" }] [:hr]]
+            [:div {:class "col-6 col-sm-6 col-lg-4"} [:canvas {:id "myChart3" }] [:hr]]
+             ]]
+          (include-js "/js/chartpage.js")))
 
 (defn add-post []
   (layout "My Blog - Add Post"
