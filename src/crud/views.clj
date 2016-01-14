@@ -20,21 +20,21 @@
   )
 
 (defn nav-bar []
-[:div
-  [:br] [:br] [:br]
+  [:div
+   [:br] [:br] [:br]
 
-  [:div {:class "navbar navbar-inverse navbar-fixed-top", :role "navigation"}
-   [:div {:class "container"}
-    [:div {:class "navbar-header"}
-     [:button {:type "button", :class "navbar-toggle", :data-toggle "collapse", :data-target ".navbar-collapse"}
-      [:span {:class "sr-only"} "Toggle navigation"] [:span {:class "icon-bar"}] [:span {:class "icon-bar"}]
-      [:span {:class "icon-bar"}]] [:a {:shape "rect", :class "navbar-brand", :href "/"} "CRUD eksempel"]]
-    [:div {:class "collapse navbar-collapse"}
-     [:ul {:class "nav navbar-nav"}
-      [:li {} [:a {:shape "rect", :href "/"} "Hjem"]]
-      [:li {} [:a {:shape "rect", :href "/dashboard"} "Dashboard"]]
-      [:li {} [:a {:shape "rect", :href "/admin"} "Admin"]]]]]]
- ]
+   [:div {:class "navbar navbar-inverse navbar-fixed-top", :role "navigation"}
+    [:div {:class "container"}
+     [:div {:class "navbar-header"}
+      [:button {:type "button", :class "navbar-toggle", :data-toggle "collapse", :data-target ".navbar-collapse"}
+       [:span {:class "sr-only"} "Toggle navigation"] [:span {:class "icon-bar"}] [:span {:class "icon-bar"}]
+       [:span {:class "icon-bar"}]] [:a {:shape "rect", :class "navbar-brand", :href "/"} "CRUD eksempel"]]
+     [:div {:class "collapse navbar-collapse"}
+      [:ul {:class "nav navbar-nav"}
+       [:li {} [:a {:shape "rect", :href "/"} "Hjem"]]
+       [:li {} [:a {:shape "rect", :href "/dashboard"} "Dashboard"]]
+       [:li {} [:a {:shape "rect", :href "/admin"} "Admin"]]]]]]
+   ]
   )
 
 ; Post is a map corresponding to a record from the database
@@ -96,19 +96,19 @@
              (map #(post-summary %) (posts/all))]]]))
 
 (defn chart-page []
-  (layout "Min Blog - Administrer Blog"
+  (layout "Mit dashboard (chartpage.js)"
           (nav-bar)
           [:div {:class "container"}
            [:div {:class "content"}
             [:h1 "Test chart (chartjs)"]
-            [:div {:class "col-6 col-sm-6 col-lg-4"} [:canvas {:id "myChart1" }] [:hr]]
-            [:div {:class "col-6 col-sm-6 col-lg-4"} [:canvas {:id "myChart2" }] [:hr]]
-            [:div {:class "col-6 col-sm-6 col-lg-4"} [:canvas {:id "myChart3" }] [:hr]]
-             ]]
+            [:div {:class "col-6 col-sm-6 col-lg-4"} [:canvas {:id "myChart1"}] [:hr]]
+            [:div {:class "col-6 col-sm-6 col-lg-4"} [:canvas {:id "myChart2"}] [:hr]]
+            [:div {:class "col-6 col-sm-6 col-lg-4"} [:canvas {:id "myChart3"}] [:hr]]
+            ]]
           (include-js "/js/chartpage.js")))
 
 (defn add-post []
-  (layout "My Blog - Add Post"
+  (layout "Min Blog - Ny Post"
           (nav-bar)
           [:div {:class "container"}
            [:div {:class "content"}
@@ -130,7 +130,7 @@
               [:a {:class "btn btn-default" :id "tilbage" :href "/admin"} "Tilbage"]]]]]))
 
 (defn edit-post [id]
-  (layout "My Blog - Edit Post"
+  (layout "Min Blog - Ret Post"
           (nav-bar)
           [:div {:class "container"}
            [:div {:class "content"}
@@ -154,7 +154,7 @@
               [:a {:class "btn btn-default" :id "tilbage" :href "/admin"} "Tilbage"]]]]]))
 
 (defn show-post [id]
-  (layout "Min Blog - Show Post"
+  (layout "Min Blog - Vis Post"
           (nav-bar)
           [:div {:class "container"}
            [:div {:class "content"}

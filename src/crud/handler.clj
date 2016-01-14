@@ -2,13 +2,15 @@
   ;  (:use [compojure.core :only (GET POST defroutes)])
   (:require [compojure.route :as route]
             [compojure.core :refer [GET POST defroutes]]
+            [ring.adapter.jetty :as jetty]
             [ring.util.response :as resp]
             [ring.middleware.basic-authentication :refer :all]
             [ring.util.response :refer [resource-response response]]
     ;            [ring.middleware.json :as middleware]
             [ring.middleware.defaults :refer [wrap-defaults api-defaults]]
             [crud.posts :as posts]
-            [crud.views :as views]))
+            [crud.views :as views])
+  (:gen-class))
 
 
 (defn authenticated? [name pass]
@@ -25,15 +27,15 @@
            (GET "/admin" [] (views/admin-blog-page))
            (GET "/admin/add" [] (views/add-post))
            (POST "/admin/create" [& params]
-                 (do (posts/create params)
-                     (resp/redirect "/admin")))
+             (do (posts/create params)
+                 (resp/redirect "/admin")))
            (GET "/admin/:id/edit" [id] (views/edit-post id))
            (POST "/admin/:id/save" [& params]
-                 (do (posts/save (:id params) params)
-                     (resp/redirect "/admin")))
+             (do (posts/save (:id params) params)
+                 (resp/redirect "/admin")))
            (GET "/admin/:id/delete" [id]
-                (do (posts/delete id)
-                    (resp/redirect "/admin"))))
+             (do (posts/delete id)
+                 (resp/redirect "/admin"))))
 
 (defroutes app-routes
            public-routes
@@ -45,3 +47,12 @@
       ;      (middleware/wrap-json-body)
       ;      (middleware/wrap-json-response)
       (wrap-defaults api-defaults)))
+
+(defn -main
+  [& [port]]
+  (let [port (Integer. (or port
+                           (System/getenv "PORT")
+                           5000))]
+    (jetty/run-jetty #'app {:port  port
+                            :join? false})))
+

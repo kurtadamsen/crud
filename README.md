@@ -12,9 +12,20 @@ You will need [Leiningen][1] 1.7.0 or above installed.
 
 ## Running
 
+Remeber to start the MySQLServer first
+
 To start a web server for the application, run:
 
     lein ring server
+
+or
+
+    lein run <port>
+    
+To start server i repl
+
+   (use 'crud.handler)
+   (-main)
 
 ## License
 
