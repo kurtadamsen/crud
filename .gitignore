@@ -5,10 +5,9 @@
 pom.xml
 pom.xml.asc
 *.jar
-*.class
 /.lein-*
+Lein*
 /.nrepl-port
 .idea
-.idea/libraries
 crud.iml
 
