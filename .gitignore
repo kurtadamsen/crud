@@ -9,6 +9,6 @@ pom.xml.asc
 /.lein-*
 /.nrepl-port
 .idea
-.idea/*
+.idea/libraries
 crud.iml
 
