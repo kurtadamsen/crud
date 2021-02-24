@@ -8,3 +8,18 @@ jobs:
       - uses: actions/setup-node@v1
       - run: npm install -g bats
       - run: bats -v
+      # You may pin to the exact commit or the version.
+      # uses: emibcn/badge-action@2f70f25eed9a1b71ffb09535523b460cc8c16d04
+      - uses: emibcn/badge-action@v1
+        with:
+          # The left label of the badge, usually static.
+          label: OSM
+          # Hex or named color for the label
+          label-color: 555
+          # The right status as the badge, usually based on results.
+          status: OK
+          # An array (comma separated) with hex or named colors of the badge value background. More than one creates gradient background.
+          color: blue
+          # Badge style: flat or classic
+          style: classic
+          
