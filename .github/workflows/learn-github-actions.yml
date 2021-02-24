@@ -6,8 +6,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
-      - run: npm install -g bats
-      - run: bats -v
       # You may pin to the exact commit or the version.
       # uses: emibcn/badge-action@2f70f25eed9a1b71ffb09535523b460cc8c16d04
       - uses: emibcn/badge-action@v1
@@ -16,4 +14,7 @@ jobs:
           status: '53.4%'
           color: 'blue,555,daf'
           path: '.github/badges/coverage.svg'
+      - run: npm install -g bats
+      - run: bats -v
+
           
